@@ -7,6 +7,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -qq && apt-get install -y --no-install-recommends \
       libopencv-dev \
       libusb-1.0-0-dev \
+      libboost-all-dev libproj-dev \
       wget unzip \
       && rm -rf /var/lib/apt/lists/*
 
