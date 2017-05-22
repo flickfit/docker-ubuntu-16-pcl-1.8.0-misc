@@ -29,3 +29,5 @@ RUN \
     cmake -DCMAKE_BUILD_TYPE=Release .. && \
     make -j 2 && make install && \
     cd ../../ && rm -rf aruco-2.0.19 && rm -f aruco-2.0.19.zip
+
+RUN ldconfig
