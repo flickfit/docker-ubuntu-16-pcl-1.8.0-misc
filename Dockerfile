@@ -8,7 +8,6 @@ RUN apt-get update -qq && apt-get install -y --no-install-recommends \
       libopencv-dev \
       libusb-1.0-0-dev \
       libboost-all-dev libproj-dev \
-      wget unzip \
       && rm -rf /var/lib/apt/lists/*
 
 # Build librealsense
@@ -22,12 +21,11 @@ RUN \
 
 # Build lib_aruco
 RUN \
-    wget https://sourceforge.net/projects/aruco/files/2.0.19/aruco-2.0.19.zip --no-check-certificate && \
-    unzip aruco-2.0.19.zip && \
-    cd aruco-2.0.19 && \
+    git clone https://git.code.sf.net/p/aruco/aruco-git aruco-aruco-git --depth 1 && \
+    cd aruco-aruco-git && \
     mkdir build && cd build && \
     cmake -DCMAKE_BUILD_TYPE=Release .. && \
     make -j 2 && make install && \
-    cd ../../ && rm -rf aruco-2.0.19 && rm -f aruco-2.0.19.zip
+    cd ../../ && rm -rf aruco-aruco-git
 
 RUN ldconfig
