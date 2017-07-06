@@ -12,7 +12,7 @@ RUN apt-get update -qq && apt-get install -y --no-install-recommends \
 
 # Build librealsense
 RUN \
-    git clone https://github.com/IntelRealSense/librealsense.git --depth 1 && \
+    git clone --branch v1.12.1 https://github.com/IntelRealSense/librealsense.git --depth 1 && \
     cd librealsense && \
     mkdir build && cd build && \
     cmake -DCMAKE_BUILD_TYPE=Release .. && \
